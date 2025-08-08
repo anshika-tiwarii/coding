@@ -4,19 +4,20 @@ using namespace std;
 bool isSafe(int row,int col,int n,vector<string> &board){
     int duprow=row;
     int dupcol=col;
+    //upper diagonal
     while(row>=0 && col>=0){
         if(board[row][col]=='Q') return false;
     row--;
     col--;
     }
-    
+    //left
     row=duprow;
     col=dupcol;
     while(col>=0){
         if(board[row][col]=='Q') return false;
     col--;
     }
-
+    //lower diagonal
     row=duprow;
     col=dupcol;
     while(row<n && col>=0){

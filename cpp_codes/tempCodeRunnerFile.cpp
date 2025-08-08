@@ -1,1 +1,4 @@
-printF(ind+1,ds,arr,n);
+Node(int data1){
+    //     data=data1;
+    //     next=nullptr;
+    // }

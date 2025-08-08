@@ -1,6 +1,7 @@
 #include<bits/stdc++.h>
 #include<iostream>
 using namespace std;
+//HASHING IS USED
 void solve(int col,int n,vector<string> &board,vector<vector<string>> &answer,vector<int> &leftRow,vector<int> &upperDiagonal,vector<int> &lowerDiagonal){
     if (col==n){
         answer.push_back(board);
