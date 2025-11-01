@@ -1,23 +1,21 @@
 #include<bits/stdc++.h>
-#include<iostream>
 using namespace std;
-struct Node {
-  public:
+class Node {
+public:
     int data;
     Node* left;
     Node* right;
 
-    Node(int val) {
-        data = val;
-        left = nullptr;
-        right = nullptr;
+    Node(int x) {
+        data = x;
+        left = right = NULL;
     }
 };
 
 
 class Solution {
   public:
-    vector<int> topView(Node *root) {
+    vector<int> bottomView(Node *root) {
         vector<int> result;
         if(root==NULL) return result;
         queue<pair<Node*,int>> todo;
@@ -28,8 +26,7 @@ class Solution {
             todo.pop();
             Node* node=p.first;
             int vertical=p.second;
-            if(nodes.find(vertical)==nodes.end()) nodes[vertical]=node->data;
-            
+            nodes[vertical]=node->data;
             if(node->left){
                 todo.push({node->left,vertical-1});
             }
@@ -37,7 +34,6 @@ class Solution {
                 todo.push({node->right,vertical+1});
             }
         }
-        
         for(auto p:nodes){
             result.push_back(p.second);
         }
@@ -58,14 +54,14 @@ int main() {
 
     Solution solution;
 
-    // Get the top view traversal
-    vector<int> topView =solution.topView(root);
+    // Get the Bottom View traversal
+    vector<int> bottomView =solution.bottomView(root);
 
     // Print the result
-    cout << "Top View Traversal: "<< endl;
-    for(auto node: topView){
+    cout << "Bottom View Traversal: "<< endl;
+    for(auto node: bottomView){
         cout << node << " ";
     }
 
-    return 0;
+    
 }
