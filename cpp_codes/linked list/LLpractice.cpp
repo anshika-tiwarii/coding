@@ -87,23 +87,45 @@ Node* oddEvenIndices(Node* headd){
     }
     return headd;
 }
+//Node* revLinkedList(Node* head3){      //iterative approach
+//     if (head3==NULL) return head3;
+//     Node* prev =NULL;
+//     Node* temp=head3;
+//     while(temp!=NULL){        
+//         //
+//         Node* front=temp->next;
+//         temp->next=prev;
+//         prev=temp;
+//         temp=front;
+//     }
+    
+//     return prev;
+//}
+Node* revLinkedList(Node* head){
+    if(head==NULL || head->next==NULL) return head;
+    Node* newHead=revLinkedList(head->next);
+    Node* front=head->next;
+    front->next=head;
+    head=NULL;
+    return newHead;
+}
 int main(){
     vector <int> arr1={3,5};
     Node* head1=convertArrtoLL(arr1);
-    print(head1);
+    ///print(head1);
     cout<<endl;
     vector <int> arr2={4,5,9,9};
     Node* head2=convertArrtoLL(arr2);
-    print(head2);
+    //print(head2);
     cout<<endl;
     Node * head=add2LL(head1,head2);
-    print(head);
+    //print(head);
     cout<<endl;
     vector<int> array={1,2,3,4,5,6,7};
     Node* headd=convertArrtoLL(array);
     Node* headd2=oddEvenIndices(headd);
-    print(headd2);
-
-    
-
+    print(headd);
+    cout<<endl;
+    Node* hd=revLinkedList(headd);
+    print(hd); 
 }
